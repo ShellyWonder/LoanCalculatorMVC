@@ -1,6 +1,7 @@
 ﻿using LoanCalculatorMVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using LoanCalculatorMVC.Helpers;
 
 namespace LoanCalculatorMVC.Controllers
 {
@@ -17,7 +18,7 @@ namespace LoanCalculatorMVC.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult App()
         {
             Loan loan = new ();
@@ -29,6 +30,18 @@ namespace LoanCalculatorMVC.Controllers
             loan.Term = 60;
 
             return View(loan);
+
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult App(Loan loan)
+        {
+            //Calculate the loan & get payments
+            //call LoanHelper
+            var loanHelper = new LoanHelper();
+            Loan newloan = loanHelper.GetPayments(loan);
+           
+            return View(newloan);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

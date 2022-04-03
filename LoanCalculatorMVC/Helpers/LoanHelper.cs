@@ -23,7 +23,7 @@ namespace LoanCalculatorMVC.Helpers
             var monthlyPrincipal = 0.0m;
             var MonthlyRate = CalcMonthlyRate(loan.Rate);
             //loop over each month until term reached
-            for (int month = 1; month < loan.Term; month++)
+            for (int month = 1; month <= loan.Term; month++)
             {
                 monthlyInterest = CalcMonthlyInterest(balance, MonthlyRate);
                 totalInterest += monthlyInterest;

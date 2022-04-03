@@ -125,6 +125,15 @@ body {
 
 #tableheader {
     background-color: #2B404F;
+    color: white;
+ }
+form{
+    background-color: #2B404F;
+    color: white;
+    padding: 5px;
+ }
+ #scheduleTable {
+    border: groove 2px #ff993b;
 }
 
 #totalCost {
